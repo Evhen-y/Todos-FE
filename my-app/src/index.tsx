@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import './containers/Todos/store/constans'
 
 ReactDOM.render(
   <React.StrictMode>
