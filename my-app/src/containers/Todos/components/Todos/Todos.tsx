@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-
-interface ITodo {
-  id: number;
-  text: string;
-  createAt: Date;
-  completed: boolean;
-}
+import { ITodo } from "../../store/interface";
 
 const Todos = () => {
   const [todos, setTodos] = useState<ITodo[] | undefined>();
