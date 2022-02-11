@@ -1,7 +1,8 @@
 import { TYPES } from "./actionsTypeCreator";
+import { AnyAction } from "redux";
 
 interface IActions {
-  [key: string]: { [key: string]: (payload: Object, options?: Object, cb?: () => void) => Object };
+  [key: string]: { [key: string]: (payload: Object, options?: Object, cb?: () => void) => AnyAction };
 }
 
 export const actionsCreator = (aType: string[]): IActions => {
@@ -12,8 +13,8 @@ export const actionsCreator = (aType: string[]): IActions => {
       response[at][t] = (payload: Object, options?: Object, cb?: () => void) => ({
         type: `${at}_${t}`,
         payload,
-        options,
         cb,
+        options,
       });
     });
   });
