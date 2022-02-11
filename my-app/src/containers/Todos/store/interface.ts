@@ -5,7 +5,7 @@ export interface ITodo {
   complited: boolean;
 }
 
-export interface ITodosInterface {
+export interface ITodosState {
   todos: ITodo[];
   error: null | string;
   loading: boolean;

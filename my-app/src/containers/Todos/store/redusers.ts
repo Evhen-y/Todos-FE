@@ -1,14 +1,14 @@
 import { Reducer as IReducer } from "redux";
 import { TodosActionsTypes } from "@containers/";
-import { ITodo, ITodosInterface } from "./interface";
+import { ITodo, ITodosState } from "./interface";
 
-const initionState: ITodosInterface = {
+const initionState: ITodosState = {
   error: null,
   loading: false,
   todos: [],
   todo: null,
 };
-export const todosReduser: IReducer<ITodosInterface> = (state: ITodosInterface = initionState, action) => {
+export const todosReduser: IReducer<ITodosState> = (state: ITodosState = initionState, action) => {
   switch (action.type) {
     case TodosActionsTypes.FETCH_TODOS.REQUEST:
     case TodosActionsTypes.FETCH_TODO.REQUEST:
