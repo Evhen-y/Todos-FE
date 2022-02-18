@@ -1,5 +1,5 @@
 import { Reducer as IReducer } from "redux";
-import { TodosActionsTypes } from "@containers/";
+import { TodosActionsTypes} from "@containers/";
 import { ITodo, ITodosState } from "./interface";
 
 const initionState: ITodosState = {
@@ -46,3 +46,5 @@ export const todosReduser: IReducer<ITodosState> = (state: ITodosState = inition
       return state;
   }
 };
+
+
