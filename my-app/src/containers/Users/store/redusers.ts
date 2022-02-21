@@ -2,13 +2,13 @@ import { Reducer as IReducer } from "redux";
 import { UsersActionsTypes } from "@containers/";
 import { IUser, IUsersState } from "./interface";
 
-const initionState: IUsersState = {
+const initionStateUser: IUsersState = {
   error: null,
   loading: false,
   users: [],
   user: null,
 };
-export const usersReduser: IReducer<IUsersState> = (state: IUsersState = initionState, action) => {
+export const usersReduser: IReducer<IUsersState> = (state: IUsersState = initionStateUser, action) => {
   switch (action.type) {
     case UsersActionsTypes.FETCH_USERS.REQUEST:
     case UsersActionsTypes.FETCH_USER.REQUEST:

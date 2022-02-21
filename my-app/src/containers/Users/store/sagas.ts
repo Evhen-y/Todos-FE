@@ -1,4 +1,3 @@
-import { getMaxListeners } from "process";
 import { takeLatest, put, call } from "redux-saga/effects";
 import { usersActions, UsersActionsTypes } from ".";
 
