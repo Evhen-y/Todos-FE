@@ -1,8 +1,10 @@
-import { takeLatest, put, call } from "redux-saga/effects";
-import { todosActions, TodosActionsTypes } from ".";
+import { takeLatest, put, call, select } from "redux-saga/effects";
+import { getTodosFilter, todosActions, TodosActionsTypes } from ".";
 
 function* fetchTodosSaga({ payload, cb }: ReturnType<any>) {
   try {
+    //@ts-ignore
+    // const {search} = yield select(state => state.todosReduser.filterSettings)
     const todos = [
       {
         id: 1,
@@ -91,10 +93,15 @@ function* removeTodoSaga({ payload, cb }: ReturnType<any>) {
   }
 }
 
+// function* filterTodosSaga({ payload, cb }: ReturnType<any>) {
+//   cb()
+// }
+
 export const todosWatcherSaga = function* () {
   yield takeLatest(TodosActionsTypes.FETCH_TODOS.REQUEST, fetchTodosSaga);
   yield takeLatest(TodosActionsTypes.FETCH_TODO.REQUEST, fetchTodoSaga);
   yield takeLatest(TodosActionsTypes.ADD_TODO.REQUEST, addTodoSaga);
   yield takeLatest(TodosActionsTypes.EDIT_TODO.REQUEST, editTodoSaga);
   yield takeLatest(TodosActionsTypes.REMOVE_TODO.REQUEST, removeTodoSaga);
+  // yield takeLatest(TodosActionsTypes.TODO_FILTER.REQUEST, filterTodosSaga);
 };

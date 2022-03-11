@@ -7,7 +7,7 @@ function* fetchUsersSaga({ payload, cb }: ReturnType<any>) {
       {
         id: 1,
         name: "Zhenya",
-        lastName:"Ilushchenko",
+        lastName: "Ilushchenko",
         avatar: null,
         email: "qq@gmail.com",
         createAt: new Date(),
@@ -16,7 +16,7 @@ function* fetchUsersSaga({ payload, cb }: ReturnType<any>) {
       {
         id: 2,
         name: "olya",
-        lastName:"Girl",
+        lastName: "Girl",
         avatar: null,
         email: "qqq@gmail.com",
         createAt: new Date(),
@@ -37,7 +37,7 @@ function* fetchUserSaga({ payload, cb }: ReturnType<any>) {
       {
         id: 3,
         name: "Gena",
-        lastName:"Friend",
+        lastName: "Friend",
         avatar: null,
         email: "qqqq@gmail.com",
         createAt: new Date(),
@@ -59,7 +59,7 @@ function* addUserSaga({ payload, cb }: ReturnType<any>) {
       {
         id: 4,
         name: "Roma",
-        lastName:"Friend2",
+        lastName: "Friend2",
         avatar: null,
         email: "q1qqq@gmail.com",
         createAt: new Date(),
@@ -80,7 +80,7 @@ function* editUserSaga({ payload, cb }: ReturnType<any>) {
       {
         id: 4,
         name: "Roman",
-        lastName:"Friend2",
+        lastName: "Friend2",
         avatar: null,
         email: "q1qqq@gmail.com",
         createAt: new Date(),
