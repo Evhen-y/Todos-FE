@@ -9,7 +9,6 @@ export interface IFilterSettings {
   sortBy: keyof ITodo;
   search: string;
   order: EOrder;
- 
 }
 
 export interface ITodo {

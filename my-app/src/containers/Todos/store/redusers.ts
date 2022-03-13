@@ -1,7 +1,7 @@
 import { Reducer as IReducer } from "redux";
 import { TodosActionsTypes } from "@containers/";
 import { ITodo, ITodosState } from "./interface";
-import {EOrder} from "./interface"
+import { EOrder } from "./interface";
 
 const initionState: ITodosState = {
   error: null,

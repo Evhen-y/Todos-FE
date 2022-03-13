@@ -1,46 +1,21 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { ITodo } from "../../store/interface";
-import {todosActions, getTodos, getTodosFilter, getFilterSettings} from "@containers/"
-import {useSelector, useDispatch} from "react-redux"
+import { todosActions, getTodos, getTodosFilter, getFilterSettings } from "@containers/";
+import { useSelector, useDispatch } from "react-redux";
 const Todos = () => {
-  // const [todos, setTodos] = useState<ITodo[] | undefined>([
-  //   {
-  //     id: 1,
-  //     text: "Todo 001",
-  //     createAt: new Date(),
-  //     complited: false,
-  //   },
-  // ]);
-  const [searchSrt, setSearchStr] = useState("")
-  const todos :ITodo[] = useSelector(getTodosFilter())
-  const dispatch = useDispatch()
+  const [searchSrt, setSearchStr] = useState("");
+  const todos: ITodo[] = useSelector(getTodosFilter());
+  const dispatch = useDispatch();
 
-  const filterSettings = useSelector(getFilterSettings())
-  // const applyFilteredTodos = useSelector(getTodosFilter())
+  const filterSettings = useSelector(getFilterSettings());
 
-  // console.log("applyFilteredTodos", applyFilteredTodos)
- 
-  // const handleChanch = (e: any) => {
-  //   const {trget: {value}} = e 
-  //   setSearchStr(value)
-  //   }
-  //   
-
-  // })
-
-  const searchHandler = () => {
-    dispatch(todosActions.TODO_FILTER.REQUEST({...filterSettings, search: searchSrt} 
-    //   ()=>{
-    //        dispatch(todosActions.FETCH_TODOS.REQUEST({}))
-    // }
-    ))
-  }
+  const searchHandlerTodo = () => {
+    dispatch(todosActions.TODO_FILTER.REQUEST({ ...filterSettings, search: searchSrt }));
+  };
   return (
     <div>
-        <input value={searchSrt} type="text" onChange={e => setSearchStr(e.target.value)}/>
-        <button onClick={searchHandler}>SEARCH</button>
-       
-       
+      <input value={searchSrt} type="text" onChange={(e) => setSearchStr(e.target.value)} />
+      <button onClick={searchHandlerTodo}>SEARCH</button>
 
       {todos?.map(({ text, id }) => (
         <div key={id}>{text}</div>
@@ -51,8 +26,8 @@ const Todos = () => {
 
 export default Todos;
 
-
-
- {/* {applyFilteredTodos?.map(({ text, id }) => (
+{
+  /* {applyFilteredTodos?.map(({ text, id }) => (
         <div key={id}>{text}</div>
-      ))} */}
+      ))} */
+}

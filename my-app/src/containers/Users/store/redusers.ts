@@ -1,12 +1,17 @@
 import { Reducer as IReducer } from "redux";
 import { UsersActionsTypes } from "@containers/";
 import { IUser, IUsersState } from "./interface";
-
+import { EOrder } from "../../Todos/store/interface";
 const initionStateUser: IUsersState = {
   error: null,
   loading: false,
   users: [],
   user: null,
+  userFilterSettings: {
+    search: "",
+    order: EOrder.ASC,
+    sortBy: "createAt",
+  },
 };
 export const usersReduser: IReducer<IUsersState> = (state: IUsersState = initionStateUser, action) => {
   switch (action.type) {
@@ -42,6 +47,9 @@ export const usersReduser: IReducer<IUsersState> = (state: IUsersState = inition
     case UsersActionsTypes.EDIT_USER.FAILURE:
     case UsersActionsTypes.REMOVE_USER.FAILURE:
       return { ...state, loading: false, error: action.payload };
+
+    case UsersActionsTypes.USER_FILTER.REQUEST:
+      return { ...state, userFilterSettings: { ...state.userFilterSettings, search: action.payload.search } };
     default:
       return state;
   }
