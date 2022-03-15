@@ -1,1 +1,1 @@
-export * from "./UserContainer";
+export { default as UserContainer } from "./UserContainer";

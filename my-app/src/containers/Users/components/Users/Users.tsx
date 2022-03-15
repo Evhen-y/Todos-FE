@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { IUser } from "../../store/interface";
 import { usersActions } from "../../store/actions";
 
-export const Users = () => {
+const Users = () => {
   const [stateUsers, setStateUsers] = useState("");
   const dispatch = useDispatch();
   const userFilterSettings = useSelector(getUserFilterSettings());
@@ -23,3 +23,5 @@ export const Users = () => {
     </div>
   );
 };
+
+export default Users;
