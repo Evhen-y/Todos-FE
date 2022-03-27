@@ -11,5 +11,5 @@ export const getUsersFilter = () =>
   createSelector([selectUsers, selectUserFilter], (state, filter) => {
     const { search } = filter;
     console.log("filter_user", filter);
-    return state.users.filter((user) => user.name.includes(search));
+    return state.users.filter((user) => user.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
   });

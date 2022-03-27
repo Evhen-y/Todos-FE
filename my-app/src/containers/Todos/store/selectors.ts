@@ -12,7 +12,7 @@ export const getTodosFilter = () =>
   createSelector([selectTodo, selectFiltersTodos], (state, filter) => {
     const { search } = filter;
     console.log("filter_todo", filter);
-    return state.todos.filter((todo) => todo.text.includes(search));
+    return state.todos.filter((todo) => todo.text.toLocaleLowerCase().trim().includes(search.toLocaleLowerCase()));
+    // return state.todos.filter((todo) => Object.values(todo.text)
+    // .filter((value) => !!value).some((value) => value.toLowerCase().trim().includes(search)));
   });
-
-// state.todos.filter((todo)=> todo.text.includes(state.filterSettings.search))})
