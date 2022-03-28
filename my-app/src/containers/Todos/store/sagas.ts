@@ -1,7 +1,7 @@
 import { takeLatest, put, call, select } from "redux-saga/effects";
 import { getTodosFilter, todosActions, TodosActionsTypes } from ".";
 
-function* fetchTodosSaga({ payload, cb }: ReturnType<any>) {
+function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TODOS.REQUEST>) {
   try {
     //@ts-ignore
     // const {search} = yield select(state => state.todosReduser.filterSettings)
@@ -27,7 +27,7 @@ function* fetchTodosSaga({ payload, cb }: ReturnType<any>) {
     cb?.();
   }
 }
-function* fetchTodoSaga({ payload, cb }: ReturnType<any>) {
+function* fetchTodoSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TODO.REQUEST>) {
   try {
     const todo = [
       {
@@ -46,7 +46,7 @@ function* fetchTodoSaga({ payload, cb }: ReturnType<any>) {
   }
 }
 
-function* addTodoSaga({ payload, cb }: ReturnType<any>) {
+function* addTodoSaga({ payload, cb }: ReturnType<typeof todosActions.ADD_TODO.REQUEST>) {
   try {
     const newTodo = [
       {
@@ -64,7 +64,7 @@ function* addTodoSaga({ payload, cb }: ReturnType<any>) {
   }
 }
 
-function* editTodoSaga({ payload, cb }: ReturnType<any>) {
+function* editTodoSaga({ payload, cb }: ReturnType<typeof todosActions.EDIT_TODO.REQUEST>) {
   try {
     const updateTodo = [
       {
@@ -83,7 +83,7 @@ function* editTodoSaga({ payload, cb }: ReturnType<any>) {
   }
 }
 
-function* removeTodoSaga({ payload, cb }: ReturnType<any>) {
+function* removeTodoSaga({ payload, cb }: ReturnType<typeof todosActions.REMOVE_TODO.REQUEST>) {
   try {
     yield put(todosActions.REMOVE_TODO.SUCCESS(payload));
   } catch (err) {
