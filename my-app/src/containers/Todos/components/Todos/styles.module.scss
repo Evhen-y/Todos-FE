@@ -1,0 +1,11 @@
+.todos {
+    height:calc(100% - 115px);
+    overflow: auto;
+    padding-left: 10px;
+}
+.search{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding-top: 5px;
+}
