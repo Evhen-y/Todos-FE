@@ -18,7 +18,7 @@ function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_T
         createAt: new Date(),
         completed: false,
       },
-    ]
+    ];
 
     yield put(todosActions.FETCH_TODOS.SUCCESS(todos));
   } catch (err) {
