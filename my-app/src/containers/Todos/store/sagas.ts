@@ -18,19 +18,7 @@ function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_T
         createAt: new Date(),
         completed: false,
       },
-      {
-        id: 1,
-        title: "Todods 0011111111111111111111111111111111111111111111111111111111111111111111",
-        createAt: new Date(),
-        completed: false,
-      },
-      {
-        id: 1,
-        title: "Todods 001",
-        createAt: new Date(),
-        completed: false,
-      },
-    ];
+    ]
 
     yield put(todosActions.FETCH_TODOS.SUCCESS(todos));
   } catch (err) {
@@ -60,15 +48,15 @@ function* fetchTodoSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TO
 
 function* addTodoSaga({ payload, cb }: ReturnType<typeof todosActions.ADD_TODO.REQUEST>) {
   try {
-    const newTodo = [
-      {
-        id: 4,
-        text: "Todods 004",
-        createAt: new Date(),
-        completed: false,
-      },
-    ];
-    yield put(todosActions.ADD_TODO.SUCCESS(newTodo));
+    // const newTodo = [
+    //   {
+    //     id: 4,
+    //     text: "Todods 004",
+    //     createAt: new Date(),
+    //     completed: false,
+    //   },
+    // ];
+    yield put(todosActions.ADD_TODO.SUCCESS(payload));
   } catch (err) {
     yield put(todosActions.ADD_TODO.FAILURE(err as Object));
   } finally {
