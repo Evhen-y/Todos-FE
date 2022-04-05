@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ITodo } from "../../store/interface";
-import { todosActions, usersActions, getTodosFilter, getFilterSettings } from "@containers/";
+import { todosActions, usersActions, getTodosFilter, getFilterSettings, Todo } from "@containers/";
 import { useSelector, useDispatch } from "react-redux";
+import styles from "./styles.module.scss";
 const Todos = () => {
   const [searchSrt, setSearchStr] = useState("");
   const todos: ITodo[] = useSelector(getTodosFilter());
@@ -17,12 +18,14 @@ const Todos = () => {
     dispatch(todosActions.TODO_FILTER.REQUEST({ ...filterSettings, search: searchSrt }));
   };
   return (
-    <div>
-      <input value={searchSrt} type="text" onChange={(e) => setSearchStr(e.target.value)} />
-      <button onClick={searchHandlerTodo}>SEARCH</button>
+    <div className={styles.todos}>
+      <div className={styles.search}>
+        <input value={searchSrt} type="text" onChange={(e) => setSearchStr(e.target.value)} />
+        <button onClick={searchHandlerTodo}>SEARCH</button>
+      </div>
 
-      {todos?.map(({ text, id }) => (
-        <div key={id}>{text}</div>
+      {todos?.map(({ title, id }) => (
+        <Todo key={id} id={id as number} title={title} />
       ))}
     </div>
   );

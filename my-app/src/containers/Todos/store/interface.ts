@@ -13,7 +13,7 @@ export interface IFilterSettings {
 
 export interface ITodo {
   id?: number;
-  text: string;
+  title: string;
   createAt: Date;
   complited: boolean;
 }

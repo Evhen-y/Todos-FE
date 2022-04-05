@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { TodoContainers, todosActions, usersActions } from "@containers/";
 import { UserContainer } from "./containers/Users/container";
 import { publicRouter, privateRouter, routerAssessor } from "@router/";
-
+import "./styles/index.scss";
 import { Route, Switch } from "react-router";
 import { Main } from "@shared/";
 const App = () => {

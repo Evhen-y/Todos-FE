@@ -8,13 +8,25 @@ function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_T
     const todos = [
       {
         id: 1,
-        text: "Todods 001",
+        title: "Todods 001",
         createAt: new Date(),
         completed: false,
       },
       {
         id: 2,
-        text: "Todods 002",
+        title: "Todods 002",
+        createAt: new Date(),
+        completed: false,
+      },
+      {
+        id: 1,
+        title: "Todods 0011111111111111111111111111111111111111111111111111111111111111111111",
+        createAt: new Date(),
+        completed: false,
+      },
+      {
+        id: 1,
+        title: "Todods 001",
         createAt: new Date(),
         completed: false,
       },

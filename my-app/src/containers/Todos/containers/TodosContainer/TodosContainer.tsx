@@ -1,12 +1,20 @@
-import React from "react";
-import { Header, Todods, Filters, Footer } from "@containers/";
+import React, { ReactNode } from "react";
+import { Header, Todods, Filters, Footer, AddTodo } from "@containers/";
+import styles from "./styles.module.scss";
 
-const TodosContainer = () => {
+interface IComponentProps {
+  chidren?: React.ReactNode;
+}
+
+const TodosContainer = (props: IComponentProps) => {
   return (
     <div>
       <Header />
-      <Todods />
-      <Filters />
+      <div className={styles.containerTodos}>
+        <AddTodo />
+        <Todods />
+        <Filters />
+      </div>
       <Footer />
     </div>
   );
