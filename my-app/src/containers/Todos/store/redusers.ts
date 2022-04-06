@@ -43,7 +43,14 @@ export const todosReduser: IReducer<ITodosState> = (state: ITodosState = inition
       };
 
     case TodosActionsTypes.REMOVE_TODO.SUCCESS:
-      return { ...state, loading: false, todos: [...state.todos].filter((todo) => todo.id !== action.payload) };
+      let newTodos: ITodo[] = [];
+      if (Array.isArray(action.payload)) {
+        newTodos = [...state.todos].filter((todo) => action.payload.includes(todo.id));
+      } else {
+        newTodos = [...state.todos].filter((todo) => todo.id !== action.payload);
+      }
+
+      return { ...state, loading: false, todos: newTodos };
 
     case TodosActionsTypes.FETCH_TODOS.FAILURE:
     case TodosActionsTypes.FETCH_TODO.FAILURE:
@@ -53,7 +60,7 @@ export const todosReduser: IReducer<ITodosState> = (state: ITodosState = inition
       return { ...state, loading: false, error: action.payload };
 
     case TodosActionsTypes.APPLY_FILTER_TODOS.REQUEST:
-      return {...state, filterSettings: {...state.filterSettings, ...action.payload}}
+      return { ...state, filterSettings: { ...state.filterSettings, ...action.payload } };
 
     case TodosActionsTypes.TODO_FILTER.REQUEST:
       return { ...state, filterSearchSettings: { ...state.filterSearchSettings, ...action.payload } };

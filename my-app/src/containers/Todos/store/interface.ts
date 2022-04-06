@@ -29,5 +29,4 @@ export interface ITodosState {
   todo: ITodo | null;
   filterSettings: IFilterSettings;
   filterSearchSettings: IFilterSerchSettings;
-
 }

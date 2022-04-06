@@ -6,7 +6,7 @@
     width:100% ;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     position: relative;
     border-top: 1px solid  rgba(77, 77, 77, 0.2); 
 
@@ -17,6 +17,7 @@
     }
     .filter{
         display: flex;
+        
 
         > div {
             margin: 0 10px;

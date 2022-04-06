@@ -10,13 +10,13 @@ function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_T
         id: 1,
         title: "Todods 001",
         createAt: new Date(),
-        completed: false,
+        complited: false,
       },
       {
         id: 2,
         title: "Todods 002",
         createAt: new Date(),
-        completed: false,
+        complited: false,
       },
     ];
 
@@ -34,7 +34,7 @@ function* fetchTodoSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TO
         id: 3,
         text: "Todods 003",
         createAt: new Date(),
-        completed: false,
+        completed: null,
       },
     ];
 

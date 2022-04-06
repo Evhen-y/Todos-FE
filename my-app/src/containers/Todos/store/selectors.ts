@@ -3,20 +3,27 @@ import { IAppState } from "@shared/";
 
 const selectTodo = (state: IAppState) => state.todosReduser;
 const selectFiltersTodos = (state: IAppState) => state.todosReduser.filterSearchSettings;
+const selectAllFiltersTodos = (state: IAppState) => state.todosReduser.filterSettings;
 
 export const getTodos = () => createSelector(selectTodo, (state) => state.todos);
 export const getTodo = () => createSelector(selectTodo, (state) => state.todo);
 export const getFilterSettings = () => createSelector(selectTodo, (state) => state.filterSearchSettings);
 
-export const getAllFilterSettings = () => createSelector(selectTodo, ({todos, filterSettings:{complited} }) =>{
-  return complited === null? todos.filter((t)=> t.complited===complited): todos })
-
-
-  export const getTodosFilter = () =>
-  createSelector([selectTodo, selectFiltersTodos], (state, filter) => {
+export const getTodosFilter = () =>
+  createSelector([selectTodo, selectFiltersTodos, selectAllFiltersTodos], (state, filter, allfilter) => {
     const { search } = filter;
-    console.log("filter_todo", filter);
-    return state.todos.filter((todo) => todo.title.toLocaleLowerCase().trim().includes(search.toLocaleLowerCase()));
-    // return state.todos.filter((todo) => Object.values(todo.text)
-    // .filter((value) => !!value).some((value) => value.toLowerCase().trim().includes(search)));
+    const { complited } = allfilter;
+    console.log("filter_todo", search);
+    console.log("filter_todo", complited);
+    return complited !== null
+      ? state.todos
+          .filter((t) => t.complited === complited)
+          .filter((todo) =>
+            search !== "" ? todo.title.toLocaleLowerCase().trim().includes(search.toLocaleLowerCase()) : todo,
+          )
+      : state.todos.filter((todo) => todo.title.toLocaleLowerCase().trim().includes(search.toLocaleLowerCase()));
+  });
+export const getcountTodo = () =>
+  createSelector(selectTodo, (state) => {
+    return state.todos.filter((t) => !t.complited);
   });
