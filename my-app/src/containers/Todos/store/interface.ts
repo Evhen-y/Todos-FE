@@ -5,7 +5,7 @@ export enum EOrder {
   DESC = "DESC",
 }
 
-export interface IFilterSettings {
+export interface IFilterSerchSettings {
   sortBy: keyof ITodo;
   search: string;
   order: EOrder;
@@ -18,10 +18,16 @@ export interface ITodo {
   complited: boolean;
 }
 
+export interface IFilterSettings {
+  complited: boolean | null;
+}
+
 export interface ITodosState {
   todos: ITodo[];
   error: null | string;
   loading: boolean;
   todo: ITodo | null;
   filterSettings: IFilterSettings;
+  filterSearchSettings: IFilterSerchSettings;
+
 }

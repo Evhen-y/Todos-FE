@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ITodo } from "../../store/interface";
-import { todosActions, usersActions, getTodosFilter, getFilterSettings, Todo } from "@containers/";
+import { todosActions, usersActions, getTodosFilter, getFilterSettings, Todo, getAllFilterSettings } from "@containers/";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.scss";
 const Todos = () => {
@@ -13,6 +13,7 @@ const Todos = () => {
   //      dispatch(todosActions.TODO_FILTER.REQUEST({}));
   //   }, []);
   const filterSettings = useSelector(getFilterSettings());
+  const allFilterSettings = useSelector(getAllFilterSettings())
 
   const searchHandlerTodo = () => {
     dispatch(todosActions.TODO_FILTER.REQUEST({ ...filterSettings, search: searchSrt }));

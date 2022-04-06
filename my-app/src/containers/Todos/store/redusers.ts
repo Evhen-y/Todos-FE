@@ -9,6 +9,9 @@ const initionState: ITodosState = {
   todos: [],
   todo: null,
   filterSettings: {
+    complited: null,
+  },
+  filterSearchSettings: {
     search: "",
     order: EOrder.ASC,
     sortBy: "createAt",
@@ -49,8 +52,11 @@ export const todosReduser: IReducer<ITodosState> = (state: ITodosState = inition
     case TodosActionsTypes.REMOVE_TODO.FAILURE:
       return { ...state, loading: false, error: action.payload };
 
+    case TodosActionsTypes.APPLY_FILTER_TODOS.REQUEST:
+      return {...state, filterSettings: {...state.filterSettings, ...action.payload}}
+
     case TodosActionsTypes.TODO_FILTER.REQUEST:
-      return { ...state, filterSettings: { ...state.filterSettings, search: action.payload.search } };
+      return { ...state, filterSearchSettings: { ...state.filterSearchSettings, ...action.payload } };
     default:
       return state;
   }
