@@ -24,8 +24,8 @@ const Todos = () => {
         <button onClick={searchHandlerTodo}>SEARCH</button>
       </div>
 
-      {todos?.map(({ title, id }) => (
-        <Todo key={id} id={id as number} title={title} />
+      {todos?.map((todoProps) => (
+        <Todo key={todoProps.id} {...todoProps} />
       ))}
     </div>
   );

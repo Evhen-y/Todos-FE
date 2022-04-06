@@ -36,7 +36,7 @@ export const todosReduser: IReducer<ITodosState> = (state: ITodosState = inition
       return {
         ...state,
         loading: false,
-        todos: [...state.todos].map((todo) => (todo.id === action.payload ? action.payload : todo)),
+        todos: [...state.todos].map((todo) => (todo.id === action.payload.id ? action.payload : todo)),
       };
 
     case TodosActionsTypes.REMOVE_TODO.SUCCESS:
