@@ -1,0 +1,46 @@
+@import "../../../../styles/index.scss";
+.wrapper{
+    height: 400px;
+    width: 550px;
+   
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.4);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(79, 176, 250, 0.4);
+     box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.4);
+     background-color: $white ;
+     display: flex;
+     align-items: center;
+     justify-content: center; 
+     flex-direction: column;
+}
+
+
+.inputLogin{
+    margin: 0 0 80px 0;
+
+   width: 150px;
+   height: 15px;
+   cursor: pointer;
+}
+
+.imput{border: 1 solid #000;
+    width: 200px;
+    height: 25px;
+    padding: 0px 15px;
+    
+font-weight: normal;
+  
+    // background-color: burlywood;
+
+}
+
+.button{
+    color: black;
+    margin: 20px;
+    
+}
+.button:hover{
+    color: blue;
+    border-radius: 20px;
+    background-color: rgb(98, 173, 179);
+    text-shadow: 1px 1px 1px #000;
+}
