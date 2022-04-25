@@ -9,7 +9,7 @@ const initionState: ITodosState = {
   todos: [],
   todo: null,
   filterSettings: {
-    complited: null,
+    completed: null,
   },
   filterSearchSettings: {
     search: "",

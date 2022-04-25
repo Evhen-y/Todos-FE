@@ -7,11 +7,12 @@ const Filters = () => {
   const disputch = useDispatch();
   const countTodos = useSelector(getcountTodo());
 
-  const clearcomplitedTodo = () => {
+  const clearcompletedTodo = () => {
     disputch(todosActions.REMOVE_TODO.SUCCESS(countTodos.map((t) => t.id)));
+    // disputch(todosActions.FETCH_TODOS.REQUEST({}))
   };
   const handleClick = (value: null | boolean) => {
-    disputch(todosActions.APPLY_FILTER_TODOS.REQUEST({ complited: value }));
+    disputch(todosActions.APPLY_FILTER_TODOS.REQUEST({ completed: value }));
   };
 
   return (
@@ -21,7 +22,7 @@ const Filters = () => {
         <div onClick={() => handleClick(null)}> All</div>
         <div onClick={() => handleClick(true)}>Active</div>
         <div onClick={() => handleClick(false)}>Compledet</div>
-        <div onClick={clearcomplitedTodo}>Clear Completed</div>
+        <div onClick={clearcompletedTodo}>Clear Completed</div>
       </div>
     </div>
   );

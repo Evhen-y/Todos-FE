@@ -1,26 +1,30 @@
 import { takeLatest, put, call, select } from "redux-saga/effects";
 import { getTodosFilter, todosActions, TodosActionsTypes } from ".";
-
+import axios from "axios"
+import { ITodo } from "./interface";
 function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TODOS.REQUEST>) {
   try {
     //@ts-ignore
     // const {search} = yield select(state => state.todosReduser.filterSettings)
-    const todos = [
-      {
-        id: 1,
-        title: "Todods 001",
-        createAt: new Date(),
-        complited: false,
-      },
-      {
-        id: 2,
-        title: "Todods 002",
-        createAt: new Date(),
-        complited: false,
-      },
-    ];
-
-    yield put(todosActions.FETCH_TODOS.SUCCESS(todos));
+    // const todos = [
+    //   {
+    //     id: 1,
+    //     title: "Todods 001",
+    //     createAt: new Date(),
+    //     completed: false,
+    //   },
+    //   {
+    //     id: 2,
+    //     title: "Todods 002",
+    //     createAt: new Date(),
+    //     completed: false,
+    //   },
+    // ];
+   
+    const {data}: {data: ITodo[]} = yield call(() => axios.get("http://localhost:9002/api/todos"))   
+    console.log("data", data)
+    yield put(todosActions.FETCH_TODOS.SUCCESS(data));
+    
   } catch (err) {
     yield put(todosActions.FETCH_TODOS.FAILURE(err as Object));
   } finally {
@@ -28,17 +32,17 @@ function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_T
   }
 }
 function* fetchTodoSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TODO.REQUEST>) {
-  try {
-    const todo = [
-      {
-        id: 3,
-        text: "Todods 003",
-        createAt: new Date(),
-        completed: null,
-      },
-    ];
-
-    yield put(todosActions.FETCH_TODO.SUCCESS(todo));
+   try {
+  //   const todo = [
+  //     {
+  //       id: 3,
+  //       text: "Todods 003",
+  //       createAt: new Date(),
+  //       completed: null,
+  //     },
+  //   ];
+  const {data}: {data: ITodo[]} = yield call(() => axios.get(`http://localhost:9002/api/todos`, payload))
+    yield put(todosActions.FETCH_TODO.SUCCESS(data));
   } catch (err) {
     yield put(todosActions.FETCH_TODO.FAILURE(err as Object));
   } finally {
@@ -48,7 +52,9 @@ function* fetchTodoSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TO
 
 function* addTodoSaga({ payload, cb }: ReturnType<typeof todosActions.ADD_TODO.REQUEST>) {
   try {
-    yield put(todosActions.ADD_TODO.SUCCESS(payload));
+    const {data}: {data: ITodo[]} = yield call(() => axios.post("http://localhost:9002/api/todos", payload))
+
+    yield put(todosActions.ADD_TODO.SUCCESS(data));
   } catch (err) {
     yield put(todosActions.ADD_TODO.FAILURE(err as Object));
   } finally {
@@ -58,7 +64,9 @@ function* addTodoSaga({ payload, cb }: ReturnType<typeof todosActions.ADD_TODO.R
 
 function* editTodoSaga({ payload, cb }: ReturnType<typeof todosActions.EDIT_TODO.REQUEST>) {
   try {
-    yield put(todosActions.EDIT_TODO.SUCCESS(payload));
+    const {id, ...rest} = payload
+    const {data}: {data: ITodo[]} = yield call(() => axios.put(`http://localhost:9002/api/todos/${id}`, rest))
+    yield put(todosActions.EDIT_TODO.SUCCESS(data));
   } catch (err) {
     yield put(todosActions.ADD_TODO.FAILURE(err as Object));
   } finally {
@@ -68,7 +76,9 @@ function* editTodoSaga({ payload, cb }: ReturnType<typeof todosActions.EDIT_TODO
 
 function* removeTodoSaga({ payload, cb }: ReturnType<typeof todosActions.REMOVE_TODO.REQUEST>) {
   try {
-    yield put(todosActions.REMOVE_TODO.SUCCESS(payload));
+    
+    const {data}: {data: ITodo[]} = yield call(() => axios.delete(`http://localhost:9002/api/todos/${payload}`))
+    yield put(todosActions.REMOVE_TODO.SUCCESS(data));
   } catch (err) {
     yield put(todosActions.REMOVE_TODO.FAILURE(err as Object));
   } finally {

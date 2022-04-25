@@ -24,19 +24,22 @@ const AddTodo = (props: any) => {
         disputch(
           todosActions.EDIT_TODO.REQUEST(
             {
-              ...props,
-              title: value,
+              id: props.id,
+              title: value
+              
             },
             props.onClose(),
-          ),
-        );
+          ) 
+          )
+          
+        
+         disputch(todosActions.FETCH_TODOS.REQUEST({}));
       } else {
         disputch(
           todosActions.ADD_TODO.REQUEST({
-            id: new Date().getTime(),
+            // id: new Date().getTime(),
             title: value,
-            createAt: "1",
-            complited: false,
+            completed: false
           }),
         );
       }

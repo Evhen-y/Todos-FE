@@ -11,7 +11,7 @@ const App = () => {
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(todosActions.FETCH_TODOS.REQUEST({}));
-  //   dispatch(usersActions.FETCH_USERS.REQUEST({}));
+  // //   dispatch(usersActions.FETCH_USERS.REQUEST({}));
   // }, []);
   return (
     <Switch>

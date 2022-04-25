@@ -12,12 +12,12 @@ export const getFilterSettings = () => createSelector(selectTodo, (state) => sta
 export const getTodosFilter = () =>
   createSelector([selectTodo, selectFiltersTodos, selectAllFiltersTodos], (state, filter, allfilter) => {
     const { search } = filter;
-    const { complited } = allfilter;
+    const { completed } = allfilter;
     console.log("filter_todo", search);
-    console.log("filter_todo", complited);
-    return complited !== null
+    console.log("filter_todo", completed);
+    return completed !== null
       ? state.todos
-          .filter((t) => t.complited === complited)
+          .filter((t) => t.completed === completed)
           .filter((todo) =>
             search !== "" ? todo.title.toLocaleLowerCase().trim().includes(search.toLocaleLowerCase()) : todo,
           )
@@ -25,5 +25,5 @@ export const getTodosFilter = () =>
   });
 export const getcountTodo = () =>
   createSelector(selectTodo, (state) => {
-    return state.todos.filter((t) => !t.complited);
+    return state.todos.filter((t) => !t.completed);
   });

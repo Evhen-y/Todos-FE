@@ -15,11 +15,11 @@ export interface ITodo {
   id?: number;
   title: string;
   createAt: Date;
-  complited: boolean;
+  completed: boolean;
 }
 
 export interface IFilterSettings {
-  complited: boolean | null;
+  completed: boolean | null;
 }
 
 export interface ITodosState {
